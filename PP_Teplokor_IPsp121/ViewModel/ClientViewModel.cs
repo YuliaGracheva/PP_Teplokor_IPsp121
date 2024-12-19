@@ -489,7 +489,6 @@ namespace PP_Teplokor_IPsp121.ViewModel
                      wnClient.DataContext = criminalPersonDPO;
 
                      ObservableCollection<Details> groupp = new ObservableCollection<Details>();
-
                      // Присвоение ItemsSource
                      wnClient.TbDetails.ItemsSource = groupp;
 
@@ -531,6 +530,20 @@ namespace PP_Teplokor_IPsp121.ViewModel
                          MessageBox.Show("Нет права изменения данных", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                      }
                  }));
+            }
+        }
+
+        private Details selectedDetails;
+        public Details SelectedDetails
+        {
+            get
+            {
+                return selectedDetails;
+            }
+            set
+            {
+                selectedDetails = value;
+                OnPropertyChanged("SelectedDetails");
             }
         }
 

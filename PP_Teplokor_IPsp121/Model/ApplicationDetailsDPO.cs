@@ -57,7 +57,19 @@ namespace PP_Teplokor_IPsp121.Model
             return (ApplicationDetailsDPO)this.MemberwiseClone();
         }
 
-
+        private Details selectedDetails;
+        public Details SelectedDetails
+        {
+            get { return selectedDetails; }
+            set
+            {
+                if (selectedDetails != value)
+                {
+                    selectedDetails = value;
+                    OnPropertyChanged(nameof(SelectedDetails)); // Событие PropertyChanged
+                }
+            }
+        }
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {

@@ -319,6 +319,7 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
+                <TextBlock Text="Детали "  FontWeight="Bold" FontSize="16"></TextBlock>
                 <StackPanel Orientation="Horizontal">
                     <Button Grid.Column="2" Grid.Row="3" Background="#d7effa" Command="{Binding AddApplicationDetails}" Content="Добавить" FontSize="16" Margin="10,10,10,10"  Width="180">
                         <Button.Resources>
@@ -373,6 +374,7 @@ ItemsSource="{Binding ListApplicationDetails}" SelectedItem="{Binding SelectedAp
                         </GridView>
                     </ListView.View>
                 </ListView>
+                <TextBlock Text="Распределение "  FontWeight="Bold" FontSize="16"></TextBlock>
                 <StackPanel Orientation="Horizontal">
                     <Button Grid.Column="2" Grid.Row="3" Background="#d7effa" Command="{Binding AddDistribution}" Content="Добавить" FontSize="16" Margin="10,10,10,10"  Width="180">
                         <Button.Resources>

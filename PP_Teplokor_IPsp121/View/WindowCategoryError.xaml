@@ -1,0 +1,124 @@
+﻿<Window x:Class="PP_Teplokor_IPsp121.View.WindowCategoryError"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PP_Teplokor_IPsp121.View" xmlns:viewmodel="clr-namespace:PP_Teplokor_IPsp121.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:CategoryErrorViewModel}"
+        mc:Ignorable="d"
+        Title="WindowCategoryError" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40"></ColumnDefinition>
+            <ColumnDefinition Width="110"></ColumnDefinition>
+            <ColumnDefinition Width="0.5*"></ColumnDefinition>
+            <ColumnDefinition Width="0.5*"></ColumnDefinition>
+            <ColumnDefinition Width="0.5*"></ColumnDefinition>
+            <ColumnDefinition Width="40"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel Background="#dcecf5" Grid.ColumnSpan="6"></StackPanel>
+
+        <Expander Header="Меню" IsExpanded="False" Margin="5" Grid.RowSpan="6" Panel.ZIndex="1" Grid.ColumnSpan="2">
+            <ListBox SelectionChanged="ListBox_SelectionChanged" Background="#dcecf5" FontSize="14" ItemsSource="{Binding MenuItems}">
+                <ListBox.Resources>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ListBoxItem">
+                                    <Border x:Name="Border" BorderBrush="#a1c4d9" BorderThickness="1" CornerRadius="3" Margin="2" MinWidth="150" MinHeight="30">
+                                        <ContentPresenter />
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="Border" Property="Background" Value="#a1c4d9"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Background" Value="Transparent"/>
+                    </Style>
+                </ListBox.Resources>
+
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" Padding="5" VerticalAlignment="Center"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Expander>
+        <TextBlock Text="Ошибки" Grid.Column="2" Grid.Row="2" FontWeight="Bold" FontSize="16"></TextBlock>
+        <Button Grid.Column="2" Grid.Row="3" Background="#d7effa" Command="{Binding AddCategoryError}" Content="Добавить" FontSize="16" Margin="10,10,10,10">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="30"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="Black"></Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Grid.Column="3" Grid.Row="3" Background="#d7effa" Command="{Binding EditCategoryError}" Content="Редактировать" FontSize="16" Margin="10,10,10,10">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="30"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="Black"></Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Grid.Column="4" Grid.Row="3" Background="#d7effa" Command="{Binding DeleteCategoryError}" Content="В архив" FontSize="16" Margin="10,10,10,10" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="30"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="#c5d0e6"></Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <ListView Height="Auto" FontSize="14" x:Name="lvCategoryError" Background="#d7effa" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="3" 
+ItemsSource="{Binding ListCategoryError}" SelectedItem="{Binding SelectedCategoryError}" Margin="10,10,10,10">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Код" Width="50">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding CategoryErrorID}" TextWrapping="Wrap"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Название" Width="Auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding CategoryErrorName}" TextWrapping="Wrap"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Описание" Width="Auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding CategoryErrorDescriprion}" TextWrapping="Wrap"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
